@@ -1,0 +1,136 @@
+:root {
+  --bg-page: #faf6f0;
+  --bg-card: #ffffff;
+  --bg-header: #2b2825;
+  --text-primary: #2b2825;
+  --text-secondary: #6b6259;
+  --accent: #a6622c;
+  --accent-hover: #8b4f22;
+  --border: #e5ddd3;
+  --read-status: #5b7a5a;
+  --unread-status: #b5562f;
+  --delete: #a33b3b;
+  --read-status-hover: #4a6649;
+  --unread-status-hover: #94431f;
+  --delete-hover: #7e2e2e;
+  --book-hover: #f5efe6;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--bg-page);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 100px 175px 50px;
+  justify-content: center;
+}
+
+.name {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 22px;
+  color: var(--text-secondary);
+}
+
+.heading, .book {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 140px 100px;
+    gap: 20px;
+    padding: 16px;
+    align-items: center;
+}
+
+.heading {
+  margin: 0px 175px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.book {
+  margin: 0px 175px;
+  font-size: 22px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.book:hover {
+    background-color: var(--book-hover);
+}
+
+.read {
+  border: none;
+  padding: 10px 36px;
+  border-radius: 8px;
+  background-color: var(--read-status);
+  color: #ffffff;
+}
+
+.unread {
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: var(--unread-status);
+  color: #ffffff;
+}
+
+.read:hover {
+    background-color: var(--read-status-hover);
+}
+
+.unread:hover {
+    background-color: var(--unread-status-hover);
+}
+
+.delete {
+  border: none;
+  padding: 10px 33px;
+  border-radius: 8px;
+  background-color: var(--delete);
+  color: #ffffff;
+}
+
+.delete:hover {
+    background-color: var(--delete-hover);
+}
+
+.add-button {
+  margin: 40px 175px 0px;
+}
+
+.add-book {
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.add-book:hover {
+  background-color: var(--accent-hover);
+}
+
+.heading p,
+.book p {
+  margin: 0px;
+  text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+.unread, .read, .delete {
+    justify-self: center;
+}
