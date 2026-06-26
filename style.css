@@ -20,6 +20,7 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: var(--bg-page);
+  font-family: "Lora", serif;
 }
 
 .header {
@@ -30,6 +31,7 @@ body {
 }
 
 .name {
+  font-family: "Playfair Display", serif;
   font-size: 44px;
   font-weight: 900;
   color: var(--text-primary);
@@ -163,6 +165,7 @@ button {
 }
 
 .form-header p {
+  font-family: "Playfair Display", serif;
   font-size: 24px;
   font-weight: 600;
   margin: 0;
