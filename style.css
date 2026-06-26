@@ -79,7 +79,7 @@ body {
 
 .unread {
   border: none;
-  padding: 10px 24px;
+  padding: 10px 30px;
   border-radius: 8px;
   background-color: var(--unread-status);
   color: #ffffff;
