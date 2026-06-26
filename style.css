@@ -31,7 +31,7 @@ body {
 
 .name {
   font-size: 44px;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-primary);
 }
 
@@ -41,12 +41,13 @@ body {
   color: var(--text-secondary);
 }
 
-.heading, .book {
-    display: grid;
-    grid-template-columns: 80px 1fr 1fr 140px 100px;
-    gap: 20px;
-    padding: 16px;
-    align-items: center;
+.heading,
+.book {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 140px 100px;
+  gap: 20px;
+  padding: 16px;
+  align-items: center;
 }
 
 .heading {
@@ -66,7 +67,7 @@ body {
 }
 
 .book:hover {
-    background-color: var(--book-hover);
+  background-color: var(--book-hover);
 }
 
 .read {
@@ -86,11 +87,11 @@ body {
 }
 
 .read:hover {
-    background-color: var(--read-status-hover);
+  background-color: var(--read-status-hover);
 }
 
 .unread:hover {
-    background-color: var(--unread-status-hover);
+  background-color: var(--unread-status-hover);
 }
 
 .delete {
@@ -102,7 +103,7 @@ body {
 }
 
 .delete:hover {
-    background-color: var(--delete-hover);
+  background-color: var(--delete-hover);
 }
 
 .add-button {
@@ -115,6 +116,7 @@ body {
   border-radius: 8px;
   background-color: var(--accent);
   color: #ffffff;
+  outline: none;
 }
 
 .add-book:hover {
@@ -128,9 +130,129 @@ body {
 }
 
 button {
+  cursor: pointer;
+}
+
+.unread,
+.read,
+.delete {
+  justify-self: center;
+}
+
+.form-container[open] {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0px 8px 24px rgba(43, 40, 37, 0.18);
+  width: 400px;
+  padding: 28px 32px;
+}
+
+.form-container::backdrop {
+  background-color: rgba(43, 40, 37, 0.45);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-header p {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.form-header button {
+  border: none;
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.form-header button:hover {
+  background-color: var(--book-hover);
+  color: var(--text-primary);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.read-unread {
+    margin-bottom: 8px;
+}
+
+.read-unread p {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0px 0px 10px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    color: var(--text-primary);
     cursor: pointer;
 }
 
-.unread, .read, .delete {
-    justify-self: center;
+.radio-group input {
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.submit {
+    width: 100%;
+    border: none;
+    padding: 12px 0px;
+    border-radius: 8px;
+    background-color: var(--accent);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.submit:hover {
+    background-color: var(--accent-hover);
 }

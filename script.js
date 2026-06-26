@@ -1,6 +1,9 @@
 const bookContainer = document.querySelector(".book-container");
 const statusBtns = document.querySelectorAll(".status");
 const addBookBtn = document.querySelector(".add-book");
+const dialog = document.querySelector(".form-container");
+const closeBtn = document.querySelector(".close");
+const form = document.querySelector(".book-form");
 
 const myLibrary = [];
 let num = 1;
@@ -10,6 +13,26 @@ addBookToLibrary("1984", "George Orwell", "Unread");
 addBookToLibrary("Dune", "Frank Herbert", "Read");
 
 displayBooks();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  addBookToLibrary(data.get("title"), data.get("author"), data.get("status"));
+
+  displayBooks();
+  dialog.close();
+  form.reset();
+});
+
+addBookBtn.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
 
 function Book(title, author, status) {
   this.title = title;
