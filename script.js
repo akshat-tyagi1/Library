@@ -5,14 +5,44 @@ const dialog = document.querySelector(".form-container");
 const closeBtn = document.querySelector(".close");
 const form = document.querySelector(".book-form");
 
-const myLibrary = [];
+class Book {
+  constructor(title, author, status) {
+    this.title = title;
+    this.author = author;
+    this.status = status;
+    this.id = crypto.randomUUID();
+  }
+
+  toggleStatus() {
+    this.status = this.status === "Read" ? "Unread" : "Read";
+  }
+}
+
+class Library {
+  #books = [];
+
+  addBook(title, author, status) {
+    const book = new Book(title, author, status);
+    this.#books.push(book);
+    return book;
+  }
+
+  deleteBook(id) {
+    const index = this.#books.findIndex((b) => b.id === id);
+    this.#books.splice(index, 1);
+  }
+
+  get books() {
+    return this.#books;
+  }
+}
+
+const myLibrary = new Library();
 let num = 1;
 
 addBookToLibrary("White Nights", "Fyodor Dostoevsky", "Read");
 addBookToLibrary("1984", "George Orwell", "Unread");
 addBookToLibrary("Dune", "Frank Herbert", "Read");
-
-displayBooks();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -21,7 +51,6 @@ form.addEventListener("submit", (e) => {
 
   addBookToLibrary(data.get("title"), data.get("author"), data.get("status"));
 
-  displayBooks();
   dialog.close();
   form.reset();
 });
@@ -34,22 +63,16 @@ closeBtn.addEventListener("click", () => {
   dialog.close();
 });
 
-function Book(title, author, status) {
-  this.title = title;
-  this.author = author;
-  this.status = status;
-  this.id = crypto.randomUUID();
-}
 
-function addBookToLibrary(title, author, status, id) {
-  const book = new Book(title, author, status);
-  myLibrary.push(book);
+function addBookToLibrary(title, author, status) {
+  myLibrary.addBook(title, author, status);
+  displayBooks();
 }
 
 function displayBooks() {
   bookContainer.textContent = "";
   num = 1;
-  myLibrary.forEach((book) => {
+  myLibrary.books.forEach((book) => {
     createBook(book);
   });
 }
@@ -63,9 +86,9 @@ function createBook(book) {
   const remove = document.createElement("button");
   const elementArr = [number, title, author, status, remove];
 
-  status.addEventListener("click", () => toggleStatus(book));
+  status.addEventListener("click", () => handleToggleStatus(book));
 
-  remove.addEventListener("click", () => deleteBook(book));
+  remove.addEventListener("click", () => handleDeleteBook(book.id));
 
   status.classList.add("status", book.status.toLowerCase());
   bookDiv.classList.add("book");
@@ -85,13 +108,12 @@ function createBook(book) {
   num++;
 }
 
-function toggleStatus(book) {
-  book.status = book.status === "Read" ? "Unread" : "Read";
+function handleToggleStatus(book) {
+  book.toggleStatus();
   displayBooks();
 }
 
-function deleteBook(book) {
-  const index = myLibrary.findIndex((b) => b.id === book.id);
-  myLibrary.splice(index, 1);
+function handleDeleteBook(id) {
+  myLibrary.deleteBook(id)
   displayBooks();
 }
